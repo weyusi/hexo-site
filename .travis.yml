@@ -1,15 +1,16 @@
+dist: bionic
+
 language: node_js
 
 sudo: false
 
 node_js:
+  - "8"
   - "10"
+  - "12"
 
 cache:
-  apt: true
-  directories:
-    - node_modules
+  npm: false
 
 script:
-  - npm run eslint
-  - npm run build
+  - /usr/bin/time -v hexo generate
