@@ -86,7 +86,7 @@ hexo.extend.injector.register('head_end', require('./lib/inject').bind(hexo))
 
 ``` js lib/inject.js
 module.exports = function () {
-  const css = this.extend.helper.get('css');
+  const css = this.extend.helper.get('css').bind(this);
   const { cssPath } = this.config.fooPlugin;
   return css(cssPath);
 }
@@ -94,7 +94,7 @@ module.exports = function () {
 
 ``` js lib/inject.js
 function injectFn() {
-  const css = this.extend.helper.get('css');
+  const css = this.extend.helper.get('css').bind(this);
   const { cssPath } = this.config.fooPlugin;
   return css(cssPath);
 }
